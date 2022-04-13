@@ -1,7 +1,7 @@
 const Vector2 = require("../Vector2");
 var Piece = require("./Piece");
 
-var Demon = function(isGold) {
+var Demon = function (isGold) {
     var demon = new Piece({
         isDead: false,
         isGold,
@@ -14,11 +14,11 @@ var Demon = function(isGold) {
         ]
     });
 
-    demon.asString = function() {
-        return "demn"
+    demon.asString = function () {
+        return "dmon"
     };
 
-    return demon; 
+    return demon;
 }
 
 module.exports = Demon;

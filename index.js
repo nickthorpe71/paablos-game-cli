@@ -15,15 +15,15 @@ function main() {
         isGold: false,
         isHuman: false
     });
-    var game = new Game({p1, p2});
-    console.log(game.board.draw());
+    var game = new Game({ p1, p2 });
+    console.log(game.render());
 
     playerInput();
 }
 
-var playerInput = function() {
-    readline.question("Command: ", function(answer) {
-        if (answer == "exit"){
+var playerInput = function () {
+    readline.question("Command: ", function (answer) {
+        if (answer == "exit") {
             readline.close();
         } else {
             waitForUserInput();

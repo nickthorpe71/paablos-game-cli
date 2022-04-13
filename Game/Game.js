@@ -1,9 +1,7 @@
 var Board = require("../Board/Board");
 
-var Game = function() {
-    var board;
-    var players;
-    var currentTurn;
+var Game = function (spec) {
+    var board, players, currentTurn;
     var movesPlayed = [];
     var state = {
         "ACTIVE": false,
@@ -13,18 +11,31 @@ var Game = function() {
         "RESIGN": false
     }
 
-    function init(p1, p2) {
-        players = [p1, p2];
-        board = new Board();
+    players = [spec.p1, spec.p2];
+    board = new Board();
 
-        if (p1.isGoldSide()) 
-            currentTurn = p1;
-        else
-            currentTurn = p2;        
+    if (spec.p1.isGoldSide())
+        this.currentTurn = spec.p1;
+    else
+        this.currentTurn = spec.p2;
+
+    setState("ACTIVE", true);
+    // setState("ACTIE", true);
+
+    function setState(targetState, isActive) {
+        if (!Object.keys(state).includes(targetState)) {
+            throw `Specified state: ${targetState} is not a valid state.`;
+        }
+
+        state[targetState] = isActive;
     }
-    
+
+    function render() {
+        return board.draw();
+    }
+
     return {
-        init,
+        render
     }
 };
 
